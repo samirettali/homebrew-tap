@@ -1,0 +1,41 @@
+name: audit
+
+# The casks here are maintained from a machine without Homebrew installed, so
+# this is where they actually get linted and installed for real. No secrets.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Homebrew only lints casks it can see as a tap, so hand it this checkout
+      # under the name it expects.
+      - name: Register the checkout as samirettali/tap
+        run: |
+          set -euo pipefail
+          taps="$(brew --repository)/Library/Taps/samirettali"
+          mkdir -p "$taps"
+          ln -s "$GITHUB_WORKSPACE" "$taps/homebrew-tap"
+
+      - name: Style
+        run: brew style samirettali/tap
+
+      # --online also checks that the download URL and homepage resolve.
+      - name: Audit
+        run: brew audit --cask --online samirettali/tap/sottovoce
+
+      # The real end-to-end test: the DMG downloads, mounts, and the app comes
+      # out of it where the cask says it will.
+      - name: Install and uninstall
+        run: |
+          set -euo pipefail
+          brew install --cask samirettali/tap/sottovoce
+          brew uninstall --cask samirettali/tap/sottovoce
