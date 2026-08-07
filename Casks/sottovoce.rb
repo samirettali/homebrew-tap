@@ -21,5 +21,10 @@ cask "sottovoce" do
   # cache is shared with every other FluidAudio app (Hex, Spokenly, Voice Ink),
   # so zapping it would delete ~470 MB belonging to something else. API keys
   # live in the Keychain and casks have no primitive to remove them.
-  zap trash: "~/Library/Preferences/dev.samir.sottovoce.plist"
+  # Both bundle ids: 0.1.0 shipped as dev.samir.sottovoce before the switch to
+  # the domain-backed com.samirettali.sottovoce.
+  zap trash: [
+    "~/Library/Preferences/com.samirettali.sottovoce.plist",
+    "~/Library/Preferences/dev.samir.sottovoce.plist",
+  ]
 end
