@@ -12,6 +12,10 @@ cask "sottovoce" do
     strategy :github_latest
   end
 
+  # The DMG carries an arm64-only binary, and the on-device transcription runs
+  # on the Neural Engine, which Intel Macs don't have. Without this an Intel
+  # user installs it and gets an app that simply won't launch.
+  depends_on arch: :arm64
   depends_on macos: :sonoma
 
   app "Sottovoce.app"
