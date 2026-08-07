@@ -25,6 +25,11 @@ jobs:
           mkdir -p "$taps"
           ln -s "$GITHUB_WORKSPACE" "$taps/homebrew-tap"
 
+      # Homebrew ignores third-party taps until they are trusted, which would
+      # silently skip everything below.
+      - name: Trust the tap
+        run: brew trust samirettali/tap
+
       - name: Style
         run: brew style samirettali/tap
 

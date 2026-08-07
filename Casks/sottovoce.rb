@@ -4,7 +4,7 @@ cask "sottovoce" do
 
   url "https://github.com/samirettali/sottovoce/releases/download/v#{version}/Sottovoce-#{version}.dmg"
   name "Sottovoce"
-  desc "Minimal macOS menu bar dictation"
+  desc "Minimal menu bar dictation"
   homepage "https://github.com/samirettali/sottovoce"
 
   livecheck do
@@ -12,7 +12,7 @@ cask "sottovoce" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "Sottovoce.app"
 

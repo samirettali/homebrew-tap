@@ -3,11 +3,16 @@
 Homebrew tap for my macOS apps.
 
 ```sh
+brew tap samirettali/tap
+brew trust samirettali/tap
 brew install --cask samirettali/tap/sottovoce
 ```
 
-Homebrew taps this repository on its own, so there's no separate `brew tap`
-step.
+Recent Homebrew ignores casks from third-party taps until they are trusted, so
+the `brew trust` step is required — without it the install fails with the tap
+listed as untrusted. Use `brew trust --cask samirettali/tap/sottovoce` instead
+to trust that one cask rather than everything this tap ships, now and in
+future.
 
 ## Casks
 
