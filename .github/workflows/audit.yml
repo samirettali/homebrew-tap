@@ -33,14 +33,23 @@ jobs:
       - name: Style
         run: brew style samirettali/tap
 
+      # Every cask, not a named one: a hardcoded token means a new cask is
+      # silently never checked, and the job still goes green.
       # --online also checks that the download URL and homepage resolve.
       - name: Audit
-        run: brew audit --cask --online samirettali/tap/sottovoce
+        run: |
+          set -euo pipefail
+          for cask in Casks/*.rb; do
+            brew audit --cask --online "samirettali/tap/$(basename "$cask" .rb)"
+          done
 
       # The real end-to-end test: the DMG downloads, mounts, and the app comes
       # out of it where the cask says it will.
       - name: Install and uninstall
         run: |
           set -euo pipefail
-          brew install --cask samirettali/tap/sottovoce
-          brew uninstall --cask samirettali/tap/sottovoce
+          for cask in Casks/*.rb; do
+            token=$(basename "$cask" .rb)
+            brew install --cask "samirettali/tap/$token"
+            brew uninstall --cask "samirettali/tap/$token"
+          done
