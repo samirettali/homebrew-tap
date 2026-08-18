@@ -22,6 +22,21 @@ trust that one cask rather than everything this tap ships, now and in future.
 
 Both are Apple Silicon only and need macOS 14 or later.
 
+## Formulae
+
+| Formula | Description |
+| --- | --- |
+| [`herdr`](https://github.com/samirettali/herdr) | My patched fork of the terminal workspace manager |
+
+```sh
+brew install samirettali/tap/herdr
+```
+
+`herdr` also exists in homebrew-core, and two taps cannot own the same name at
+once, so uninstall that one first. The formula builds from source at a pinned
+revision of the `patched` branch: bump the revision here after pushing to the
+fork.
+
 Uninstalling `sottovoce` leaves two things behind that a cask can't clean up:
 the API keys in the Keychain, and the Microphone and Accessibility grants in
 System Settings → Privacy & Security. `pulse` keeps everything in

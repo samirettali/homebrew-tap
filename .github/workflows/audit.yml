@@ -53,3 +53,39 @@ jobs:
             brew install --cask "samirettali/tap/$token"
             brew uninstall --cask "samirettali/tap/$token"
           done
+
+  # Formulae build from source here, which the casks never do, so they get their
+  # own job: a compile failure must not read as a broken cask.
+  formula:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Register the checkout as samirettali/tap
+        run: |
+          set -euo pipefail
+          taps="$(brew --repository)/Library/Taps/samirettali"
+          mkdir -p "$taps"
+          ln -s "$GITHUB_WORKSPACE" "$taps/homebrew-tap"
+
+      - name: Trust the tap
+        run: brew trust samirettali/tap
+
+      - name: Audit
+        run: |
+          set -euo pipefail
+          for formula in Formula/*.rb; do
+            brew audit --formula --online --strict "samirettali/tap/$(basename "$formula" .rb)"
+          done
+
+      # Building here is the point: my machines either have no Homebrew at all
+      # or already run the same formula from another tap.
+      - name: Install, test and uninstall
+        run: |
+          set -euo pipefail
+          for formula in Formula/*.rb; do
+            token=$(basename "$formula" .rb)
+            brew install --build-from-source "samirettali/tap/$token"
+            brew test "samirettali/tap/$token"
+            brew uninstall "samirettali/tap/$token"
+          done
