@@ -23,7 +23,7 @@ cask "sottomano" do
   # The bindings and the clipboard history, which are the only things it writes.
   # The Accessibility grant is TCC's and casks have no primitive to withdraw one.
   zap trash: [
-    "~/.config/sottomano",
     "~/.cache/sottomano",
+    "~/.config/sottomano",
   ]
 end
