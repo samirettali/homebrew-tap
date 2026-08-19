@@ -19,8 +19,9 @@ trust that one cask rather than everything this tap ships, now and in future.
 | --- | --- |
 | [`sottovoce`](https://github.com/samirettali/sottovoce) | Minimal macOS menu bar dictation |
 | [`pulse`](https://github.com/samirettali/pulse) | Menu bar live prices and clocks |
+| [`sottomano`](https://github.com/samirettali/sottomano) | Launcher driven by one leader key |
 
-Both are Apple Silicon only and need macOS 14 or later.
+All are Apple Silicon only and need macOS 14 or later.
 
 ## Formulae
 
