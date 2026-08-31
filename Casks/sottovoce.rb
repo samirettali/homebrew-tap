@@ -1,6 +1,6 @@
 cask "sottovoce" do
-  version "0.2.0"
-  sha256 "ad34824869980316bfee0cac2e2347663f8e61e535efbf9148dd8091b6f6d256"
+  version "0.3.0"
+  sha256 "fbde7ed30541c0ee98eaacbb4cad0f1b1c7fe305c0f28f4eacb2e3cd0d625d2e"
 
   url "https://github.com/samirettali/sottovoce/releases/download/v#{version}/Sottovoce-#{version}.dmg"
   name "Sottovoce"
