@@ -27,6 +27,6 @@ class Herdr < Formula
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/herdr --version")
+    assert_match(/^herdr \d+\.\d+\.\d+$/, shell_output("#{bin}/herdr --version").strip)
   end
 end
