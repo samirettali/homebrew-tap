@@ -1,6 +1,6 @@
 cask "sottomano" do
-  version "0.1.0"
-  sha256 "4218f3a8ec117b78f8cc78bff3433d8ce3fdaebfc5b7489cafdec35ba383cd02"
+  version "0.2.0"
+  sha256 "4361739ca6fb098acaa5ed6240e7c038ad3de57ae98d5eaa46463cbb8c80c0eb"
 
   url "https://github.com/samirettali/sottomano/releases/download/v#{version}/Sottomano-#{version}.dmg"
   name "Sottomano"
