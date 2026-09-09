@@ -6,7 +6,7 @@ class Herdr < Formula
   # A pinned revision is the only honest way to name a build.
   url "https://github.com/samirettali/herdr.git",
       branch:   "patched",
-      revision: "4b5f44b25db353780ac8fd72c7fb0dfd220aefb6"
+      revision: "9ffe84872b444e7a25bc167a42b174ee06429395"
   version "0.9.0"
   license "Apache-2.0"
   head "https://github.com/samirettali/herdr.git", branch: "patched"
