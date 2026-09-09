@@ -1,13 +1,13 @@
 class Herdr < Formula
   desc "Agent multiplexer that lives in your terminal, with my patches"
   homepage "https://github.com/samirettali/herdr"
-  # The fork carries one commit per feature above the released tag, so the
+  # The fork carries one commit per feature above upstream master, so the
   # branch has no tags of its own and a branch tarball has no stable checksum.
   # A pinned revision is the only honest way to name a build.
   url "https://github.com/samirettali/herdr.git",
       branch:   "patched",
-      revision: "d5b95699a217f3e1f0c897fd35c2342e9d066deb"
-  version "0.8.0"
+      revision: "4b5f44b25db353780ac8fd72c7fb0dfd220aefb6"
+  version "0.9.0"
   license "Apache-2.0"
   head "https://github.com/samirettali/herdr.git", branch: "patched"
 
